@@ -1,0 +1,15 @@
+body {
+  color:#333;
+  font-family: "Droid Sans",Helvetica,Arial,sans;
+  font-size:14px;
+  margin:0;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
+
+#options {
+  position: absolute;
+}

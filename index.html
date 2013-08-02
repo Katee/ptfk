@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Painting Toy For Kyle</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="css/all.css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript" src="js/all.js"></script>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+  <script>
+    var midCircle;
+    var options = {
+      num_dots: 10
+    };
+
+    $(document).ready(function () {
+      midCircle = new MidCirle(document.getElementById('canvas'), options);
+      $('#next').on('click', function(){
+        midCircle.iterate();
+      });
+      $('#save').on('click', function(){
+        $('textarea').text(JSON.stringify(midCircle.old_dots[0] || midCircle.dots));
+      });
+      $('#load').on('click', function(){
+        var string = $('textarea').val();
+        midCircle.old_dots = [];
+        midCircle.dots = JSON.parse(string);
+        midCircle.draw();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="options">
+    <textarea></textarea>
+    <a id="next" href="#">Next</a>
+    <a id="load" href="#">Load</a>
+    <a id="save" href="#">Save</a>
+  </div>
+  <canvas id="canvas">Sorry your browser doesn't support the canvas element. Try upgrading your browser.</canvas>
+</body>
+</html>
